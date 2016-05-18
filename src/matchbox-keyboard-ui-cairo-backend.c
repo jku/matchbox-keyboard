@@ -174,9 +174,13 @@ mb_kbd_ui_cairo_redraw_key(MBKeyboardUI  *ui, MBKeyboardKey *key)
 
   state = mb_kbd_keys_current_state(kbd); 
 
-  if (mb_kbd_has_state(kbd, MBKeyboardStateCaps)
-      && mb_kbd_key_get_obey_caps(key))
-    state = MBKeyboardKeyStateShifted;
+  if (mb_kbd_has_state(kbd, MBKeyboardStateCaps))
+    {
+      if (mb_kdb_key_has_state (key, MBKeyboardKeyStateCaps))
+        state = MBKeyboardKeyStateCaps;
+      else if (mb_kbd_key_get_obey_caps(key))
+        state = MBKeyboardKeyStateShifted;
+    }
 
   if (!mb_kdb_key_has_state(key, state))
     {
