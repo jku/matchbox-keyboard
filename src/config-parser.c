@@ -326,6 +326,10 @@ config_handle_key_subtag(MBKeyboardConfigState *state,
     {
       keystate = MBKeyboardKeyStateShifted;
     }
+  else if (streq(tag, "caps"))
+    {
+      keystate = MBKeyboardKeyStateCaps;
+    }
   else if (streq(tag, "mod1"))
     {
       keystate = MBKeyboardKeyStateMod1;
@@ -548,6 +552,7 @@ config_xml_start_cb(void *data, const char *tag, const char **attr)
   else if (streq(tag, "normal") 
 	   || streq(tag, "default")
 	   || streq(tag, "shifted")
+	   || streq(tag, "caps")
 	   || streq(tag, "mod1")
 	   || streq(tag, "mod2")
 	   || streq(tag, "mod3"))

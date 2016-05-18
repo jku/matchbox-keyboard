@@ -200,6 +200,9 @@ mb_kbd_keys_current_state(MBKeyboard *kbd)
   if (mb_kbd_has_state(kbd, MBKeyboardStateShifted))
     return MBKeyboardKeyStateShifted;
 
+  if (mb_kbd_has_state(kbd, MBKeyboardStateCaps))
+    return MBKeyboardKeyStateCaps;
+
   if (mb_kbd_has_state(kbd, MBKeyboardStateMod1))
     return MBKeyboardKeyStateMod1;
 
